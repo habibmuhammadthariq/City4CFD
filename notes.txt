@@ -1,0 +1,59 @@
+CXX=x86_64-w64-mingw32-g++ cmake .. -DCGAL_DIR=/home/habib/CGAL-5.6.1
+
+CXX=x86_64-w64-mingw32-g++ cmake .. 
+
+cmake .. -DCGAL_DIR=/home/habib/CGAL-5.6.1
+
+https://askubuntu.com/questions/355565/how-do-i-install-the-latest-version-of-cmake-from-the-command-line
+
+
+../configure --prefix=/usr/x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --build=x86_64-linux --with-msw && make && sudo make install
+
+
+../configure --prefix=/usr/x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --build=x86_64-linux --with-msw --enable-unicode --enable-optimise
+
+cmake \
+      .. \
+      -DCMAKE_C_COMPILER=x86_64-w64-mingw32-gcc \
+      -DCMAKE_CXX_COMPILER=x86_64-w64-mingw32-g++ \
+      -DCMAKE_SYSTEM_NAME=Windows \
+      -DCGAL_DIR=/home/habib/CGAL-5.6.1
+
+
+cmake \
+      .. \
+      -DCMAKE_CXX_COMPILER=x86_64-w64-mingw32-g++ \
+      -DCMAKE_SYSTEM_NAME=Windows \
+      -DCGAL_DIR=/home/habib/CGAL-5.6.1
+
+
+make clean
+make
+sudo make install
+
+/usr/local/include/wx-3.2/wx/msw/chkconf.h - 89
+#define wxUSE_OLE 1
+
+/usr/local/include/wx-3.1/wx/defs.h - 952
+return reinterpret_cast<wxUIntPtr>(p); -> return reinterpret_cast<uintptr_t>(p);
+
+
+
+# Windows
+"""""""""""""""""""""""""   """""""""""""""""""""""""   """""""""""""""""""""""""
+CMake projects should use: "-DCMAKE_TOOLCHAIN_FILE=C:/dev/vcpkg/scripts/buildsystems/vcpkg.cmake"
+
+All MSBuild C++ projects can now #include any installed libraries. Linking will be handled automatically. Installing new libraries will make them instantly available.
+
+"""""""""""""""""""""""""   """""""""""""""""""""""""   """""""""""""""""""""""""
+find_package(wxWidgets CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE wx::core wx::base)
+
+find_package(CGAL CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE CGAL::CGAL)
+
+"""""""""""""""""""""""""   """""""""""""""""""""""""   """""""""""""""""""""""""
+eigen
+gmp
+mpfr
+gdal

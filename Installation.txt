@@ -1,0 +1,29 @@
+To install wxWidgets through the command line in Ubuntu WSL, follow these steps:
+
+1. Update package lists:
+    sudo apt update
+
+2. Install dependencies:
+    sudo apt install build-essential cmake libgtk2.0-dev libjpeg-dev libpng-dev libtiff-dev libxext-dev libxfixes-dev libxft-dev libx11-dev libxrandr-dev libxi-dev libxcb-dev libxcb-shm-dev libxcb-image-dev libxcb-keysyms-dev libxcb-randr-dev libxcb-util-image-dev libxcb-util-keysyms-dev libxcb-util-render-dev libxcb-util-wm-dev
+
+3. Download and extract wxWidgets:
+    wget https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.6/wxWidgets-3.2.6.tar.bz2
+    
+    tar -xzvf wxWidgets-3.2.0.tar.gz
+    cd wxWidgets-3.2.0
+
+4. Configure wxWidgets:
+    mkdir build
+    cd build
+    cmake ..
+
+5. Compile wxWidgets:
+    make
+
+6. Install wxWidgets:
+    sudo make install
+
+7. Test installation:
+    wx-config --version
+
+This should output the installed wxWidgets version.
