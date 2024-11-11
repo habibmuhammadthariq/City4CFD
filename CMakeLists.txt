@@ -70,6 +70,18 @@ include_directories(${CMAKE_SOURCE_DIR}/thirdparty/roofer/src)
 # Tools
 add_subdirectory(${CMAKE_SOURCE_DIR}/tools/prepare_point_cloud)
 
+# Find wxWidgets using wx-config
+find_package(wxWidgets REQUIRED COMPONENTS net core base)
+
+find_package(nlohmann_json REQUIRED)
+
+# Include wxWidgets libraries and include directories
+if(wxWidgets_FOUND)
+    include(${wxWidgets_USE_FILE})
+else()
+    message(FATAL_ERROR "wxWidgets not found!")
+endif()
+
 # Creating entries for target: City4CFD
 FILE(GLOB SRC_FILES "src/*.cpp")
 add_executable(city4cfd ${SRC_FILES})
@@ -90,6 +102,9 @@ target_link_libraries(city4cfd
         roofer_api
         val3dity
         ${OpenMP_support}
+        # 
+        ${wxWidgets_LIBRARIES}
+        # nlohmann_json::nlohmann_json
         )
 
 install(TARGETS city4cfd DESTINATION bin)
