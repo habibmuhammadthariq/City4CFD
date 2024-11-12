@@ -1,7 +1,7 @@
 #include <wx/wx.h>
 #include "InputFileComponent.h"
 
-InputFileComponent::InputFileComponent(wxWindow *parent, const wxString &reqLabel): wxPanel(parent, wxID_ANY) {
+InputFileComponent::InputFileComponent(wxWindow *parent, const wxString &reqLabel, wxString defaultValue): wxPanel(parent, wxID_ANY) {
     SetBackgroundColour(wxColour(240, 240, 240)); // Light gray color
     
     wxBoxSizer *mainSizer = new wxBoxSizer(wxVERTICAL);
@@ -16,6 +16,7 @@ InputFileComponent::InputFileComponent(wxWindow *parent, const wxString &reqLabe
     textInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(250, -1));
     textInput->SetBackgroundColour(wxColour(255, 255, 204));  // Light yellow color
     textInput->Disable();
+    textInput->SetValue(defaultValue);
     hSizer->Add(textInput, 1, wxEXPAND, 5);
 
     wxButton *fileButton = new wxButton(this, wxID_ANY, "Choose File");

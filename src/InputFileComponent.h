@@ -2,7 +2,7 @@
 
 class InputFileComponent: public wxPanel {
     public:
-        InputFileComponent(wxWindow *parent, const wxString &reqLabel = "Label");
+        InputFileComponent(wxWindow *parent, const wxString &reqLabel = "Label", wxString defaultValue = "");
 
         wxString getInputValue() const;
 

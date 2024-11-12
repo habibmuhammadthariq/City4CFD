@@ -103,14 +103,14 @@ MainWindow::MainWindow()
     cmbLOD = new ComboboxComponent(mainWindow, ID_LOD, LODOptions, "LOD");
     mainSizer->Add(cmbLOD, 0, wxALL, 5);
 
-    buildingPercentile = new InputTextComponent(mainWindow, "Building Percentile", "90");
+    buildingPercentile = new InputTextComponent(mainWindow, "Building Percentile*", "90");
     mainSizer->Add(buildingPercentile, 0, wxEXPAND | wxALL, 5);
 
-    lod13StepHeight = new InputTextComponent(mainWindow, "Minimum Step Height (m)", "25");
+    lod13StepHeight = new InputTextComponent(mainWindow, "Minimum Step Height (m)*", "25");
     lod13StepHeight->Hide();
     mainSizer->Add(lod13StepHeight, 0, wxEXPAND | wxALL, 5);
 
-    complexityFactor = new InputTextComponent(mainWindow, "Complexity Factor", "0.7");
+    complexityFactor = new InputTextComponent(mainWindow, "Complexity Factor*", "0.7");
     mainSizer->Add(complexityFactor, 0, wxEXPAND | wxALL, 5);
 
     outputFilename = new InputTextComponent(mainWindow, "Output Filename", "result");
@@ -190,12 +190,10 @@ void MainWindow::OnComboBoxChanged(wxCommandEvent& event) {
 }
 
 void MainWindow::OnLODChanged() {
-    // if (cmbLOD->getInputValue().ToStdString() == "1.2") {
-    //     buildingPercentile->Show();
-    //     lod13StepHeight->Hide();
-    // }
-    // else 
-    if (cmbLOD->getInputValue().ToStdString() == "1.3") {
+    if (cmbLOD->getInputValue().ToStdString() == "1.2") {
+        // buildingPercentile->Show();
+        lod13StepHeight->Hide();
+    } else if (cmbLOD->getInputValue().ToStdString() == "1.3") {
         // buildingPercentile->Hide();
         lod13StepHeight->Show();
     } else if (cmbLOD->getInputValue().ToStdString() == "2.2") {
@@ -207,12 +205,12 @@ void MainWindow::OnLODChanged() {
 }
 
 void MainWindow::OnExtensionChanged() {
-    if (cmbExtension->getInputValue().ToStdString() == "cityjson") {
-        cmbLOD->SetComboBoxValue("1.2");
-        cmbLOD->Disable();
-    } else {
-        cmbLOD->Enable();
-    }
+    // if (cmbExtension->getInputValue().ToStdString() == "cityjson") {
+    //     cmbLOD->SetComboBoxValue("1.2");
+    //     cmbLOD->Disable();
+    // } else {
+    //     cmbLOD->Enable();
+    // }
 }
 
 void MainWindow::OnProcess(wxCommandEvent& event) {
